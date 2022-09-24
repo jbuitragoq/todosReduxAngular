@@ -20,7 +20,7 @@ export const todoReducer = createReducer(
         });
     }),
     on(deleteTodo, (state, { id }) => {
-        return [...state.filter(t => t.id !== id)]
+        return state.filter(t => t.id !== id)
     }),
     on(toggleTodo, (state, { id }) => {
         return state.map(todo => {
