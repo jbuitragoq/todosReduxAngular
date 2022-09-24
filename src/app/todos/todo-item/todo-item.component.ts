@@ -3,7 +3,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/app.reducer';
 import { Todo } from 'src/app/models/todo.model';
-import { toggleTodo } from '../todo.actions';
+import { toggleTodo, editTodo } from '../todo.actions';
 
 @Component({
   selector: 'app-todo-item',
@@ -36,5 +36,6 @@ export class TodoItemComponent {
 
   finishEdition(): void {
     this.activeEdit = false;
+    this.store.dispatch(editTodo({ id: this.todo.id, text: this.inputCtrl.value }));
   }
 }
