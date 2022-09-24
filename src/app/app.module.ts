@@ -19,7 +19,7 @@ import { todoReducer } from './todos/todo.reducer';
     AppRoutingModule,
     SharedModule,
     TodosModule,
-    StoreModule.forRoot({ listTodos: todoReducer }),
+    StoreModule.forRoot({ todosList: todoReducer }),
     StoreDevtoolsModule.instrument({ 
       maxAge: 25,
       logOnly: environment.production,
