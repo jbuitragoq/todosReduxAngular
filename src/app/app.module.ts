@@ -6,9 +6,9 @@ import { environment } from 'src/environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TodosModule } from './todos/todos.module';
+import { TodosModule } from './components/todos/todos.module';
 import { SharedModule } from './shared/shared.module';
-import { todoReducer } from './todos/todo.reducer';
+import { appReducers } from './app.reducer';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,7 @@ import { todoReducer } from './todos/todo.reducer';
     AppRoutingModule,
     SharedModule,
     TodosModule,
-    StoreModule.forRoot({ todosList: todoReducer }),
+    StoreModule.forRoot(appReducers),
     StoreDevtoolsModule.instrument({ 
       maxAge: 25,
       logOnly: environment.production,

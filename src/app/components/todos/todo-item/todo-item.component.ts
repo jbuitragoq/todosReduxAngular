@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 
 import { AppState } from 'src/app/app.reducer';
 import { Todo } from 'src/app/models/todo.model';
-import * as actions from '../todo.actions';
+import { TodoActions } from '../todo.actions';
 
 @Component({
   selector: 'app-todo-item',
@@ -26,7 +26,7 @@ export class TodoItemComponent {
     this.checkCtrl = new FormControl(this.todo.completed);
     this.inputCtrl = new FormControl(this.todo.text, Validators.required);
     this.checkCtrl.valueChanges.subscribe(() => {
-      this.store.dispatch(actions.toggleTodo({ id: this.todo.id }));
+      this.store.dispatch(TodoActions.toggle({ id: this.todo.id }));
     });
   }
 
@@ -43,7 +43,7 @@ export class TodoItemComponent {
     if (this.inputCtrl.value === this.todo.text) return;
 
     this.store.dispatch(
-      actions.editTodo({
+      TodoActions.edit({
         id: this.todo.id,
         text: this.inputCtrl.value
       })
@@ -51,6 +51,6 @@ export class TodoItemComponent {
   }
 
   deleteTodo(): void {
-    this.store.dispatch(actions.deleteTodo({ id: this.todo.id }));
+    this.store.dispatch(TodoActions.remove({ id: this.todo.id }));
   }
 }

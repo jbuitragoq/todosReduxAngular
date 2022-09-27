@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { AppState } from '../../app.reducer';
-import { toggleAllTodos } from '../todo.actions';
+import { AppState } from 'src/app/app.reducer';
+import { TodoActions } from '../todo.actions';
 
 @Component({
   selector: 'app-todo-page',
@@ -13,6 +13,6 @@ export class TodoPageComponent {
   constructor(private store: Store<AppState>) { }
 
   toggleAll(event: any): void {
-    this.store.dispatch(toggleAllTodos({ active: event.srcElement.checked }));
+    this.store.dispatch(TodoActions.toggleAll({ complete: event.srcElement.checked }));
   }
 }

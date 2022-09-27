@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/app.reducer';
-import { addTodo } from '../todo.actions';
+import { TodoActions } from '../todo.actions';
 
 @Component({
   selector: 'app-todo-add',
@@ -19,7 +19,7 @@ export class TodoAddComponent {
 
   addTodo(): void {
     if (this.inputCtrl.valid) {
-      this.store.dispatch(addTodo({ text: this.inputCtrl.value }));
+      this.store.dispatch(TodoActions.add({ text: this.inputCtrl.value }));
       this.inputCtrl.reset();
     }
   } 
