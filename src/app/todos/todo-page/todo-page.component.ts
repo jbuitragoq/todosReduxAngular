@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../app.reducer';
+import { toggleAllTodos } from '../todo.actions';
 
 @Component({
   selector: 'app-todo-page',
   templateUrl: './todo-page.component.html',
   styleUrls: ['./todo-page.component.scss']
 })
-export class TodoPageComponent implements OnInit {
+export class TodoPageComponent {
 
-  constructor() { }
+  constructor(private store: Store<AppState>) { }
 
-  ngOnInit(): void {
+  toggleAll(event: any): void {
+    this.store.dispatch(toggleAllTodos({ active: event.srcElement.checked }));
   }
-
 }

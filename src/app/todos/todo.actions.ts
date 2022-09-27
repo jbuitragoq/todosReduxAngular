@@ -16,3 +16,7 @@ export const toggleTodo = createAction(
     '[Todo] Toggle',
     props<{ id: number }>()
 );
+export const toggleAllTodos = createAction(
+    '[Todo] ToggleAll',
+    props<{ active: boolean }>()
+)
