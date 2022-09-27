@@ -21,4 +21,7 @@ export namespace TodoActions {
         '[Todo] ToggleAll',
         props<{ complete: boolean }>()
     )
+    export const clearCompleted = createAction(
+        '[Todo] ClearCompleted'
+    )
 }
