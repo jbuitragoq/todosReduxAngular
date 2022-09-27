@@ -1,9 +1,9 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import { filterTypes, setFilter } from './filter.actions';
+import { FilterTypes, setFilter } from './filter.actions';
 
-const initialFilter: filterTypes = 'all';
+const initialFilter: FilterTypes = 'all';
 
-export const filterReducer = createReducer<filterTypes, Action>(
+export const filterReducer = createReducer<FilterTypes, Action>(
     initialFilter,
     on(setFilter, (state, { filter }) => filter)
 )
