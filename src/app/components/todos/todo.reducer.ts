@@ -1,4 +1,4 @@
-import { createReducer, on } from "@ngrx/store";
+import { createReducer, on } from '@ngrx/store';
 import { Todo } from "../../models/todo.model";
 import { TodoActions } from "./todo.actions";
 
@@ -8,34 +8,46 @@ const todosList: Todo[] = [
 
 export const todoReducer = createReducer(
     todosList,
-    on(TodoActions.add, (state, { text }) => {
-        return [...state, new Todo(text)]
-    }),
-    on(TodoActions.edit, (state, { id, text }) => {
-        return state.map(todo => {
-            if (todo.id === id) {
-                return {...todo, text};
-            };
-            return todo;
-        });
-    }),
-    on(TodoActions.remove, (state, { id }) => {
-        return state.filter(t => t.id !== id)
-    }),
-    on(TodoActions.toggle, (state, { id }) => {
-        return state.map(todo => {
-            if (todo.id === id) {
-                return {...todo, completed: !todo.completed};
-            };
-            return todo;
-        });
-    }),
-    on(TodoActions.toggleAll, (state, { complete }) => {
-        return state.map(todo => {
-            return {...todo, completed: complete};
-        });
-    }),
-    on(TodoActions.clearCompleted, (state) => {
-        return state.filter(todo => !todo.completed);
-    })
+    on(TodoActions.add, addTodo),
+    on(TodoActions.edit, editTodo),
+    on(TodoActions.remove, removeTodo),
+    on(TodoActions.toggle, toggleTodo),
+    on(TodoActions.toggleAll, toggleAllTodo),
+    on(TodoActions.clearCompleted, clearCompletedTodos)
 )
+
+function addTodo(state: Todo[], { text }: any): Todo[] {
+    return [...state, new Todo(text)]
+}
+
+function editTodo(state: Todo[], { id, text }: any): Todo[] {
+    return state.map(todo => {
+        if (todo.id === id) {
+            return {...todo, text};
+        };
+        return todo;
+    });
+}
+
+function removeTodo(state: Todo[], { id }: any): Todo[] {
+    return state.filter(t => t.id !== id)
+}
+
+function toggleTodo(state: Todo[], { id }: any): Todo[] {
+    return state.map(todo => {
+        if (todo.id === id) {
+            return {...todo, completed: !todo.completed};
+        };
+        return todo;
+    });
+}
+
+function toggleAllTodo(state: Todo[], { complete }: any): Todo[] {
+    return state.map(todo => {
+        return {...todo, completed: complete};
+    });
+}
+
+function clearCompletedTodos(state: Todo[]): Todo[] {
+    return state.filter(todo => !todo.completed);
+}
