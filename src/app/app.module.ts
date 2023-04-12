@@ -6,7 +6,7 @@ import { environment } from 'src/environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TodosModule } from './components/todos/todos.module';
+import { TodoModule } from './components/todos/todo.module';
 import { SharedModule } from './shared/shared.module';
 import { appReducers } from './app.reducer';
 
@@ -18,7 +18,7 @@ import { appReducers } from './app.reducer';
     BrowserModule,
     AppRoutingModule,
     SharedModule,
-    TodosModule,
+    TodoModule,
     StoreModule.forRoot(appReducers),
     StoreDevtoolsModule.instrument({ 
       maxAge: 25,

@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { Todo } from "../../models/todo.model";
-import { TodoActions } from "./todo.actions";
+import TodoActions from "./todo.actions";
 
 const todosList: Todo[] = [
     new Todo('Finish this course')

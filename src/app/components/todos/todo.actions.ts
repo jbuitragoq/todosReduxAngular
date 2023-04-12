@@ -1,27 +1,28 @@
 import { createAction, props } from "@ngrx/store";
 
-export namespace TodoActions {
+namespace TodoActions {
     export const add = createAction(
-        '[Todo] Add',
+        '[Todos] Add',
         props<{ text: string }>()
     );
     export const edit = createAction(
-        '[Todo] Edit',
+        '[Todos] Edit',
         props<{ id: number, text: string}>()
     )
     export const remove = createAction(
-        '[Todo] Remove',
+        '[Todos] Remove',
         props<{ id: number }>()
     );
     export const toggle = createAction(
-        '[Todo] Toggle',
+        '[Todos] Toggle',
         props<{ id: number }>()
     );
     export const toggleAll = createAction(
-        '[Todo] ToggleAll',
+        '[Todos] ToggleAll',
         props<{ complete: boolean }>()
     )
     export const clearCompleted = createAction(
-        '[Todo] ClearCompleted'
+        '[Todos] ClearCompleted'
     )
 }
+export default TodoActions;

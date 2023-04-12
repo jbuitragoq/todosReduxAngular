@@ -12,10 +12,10 @@ import { FilterTypes } from '../../filter/filter.actions';
 export class TodoListComponent {
 
   currentFilter: FilterTypes = 'all';
-  todosList: Todo[] = [];
+  todos: Todo[] = [];
 
   constructor(private store: Store<AppState>) {
-    store.select('todosList').subscribe(todos => this.todosList = todos);
+    store.select('todos').subscribe(todos => this.todos = todos);
     store.select('filter').subscribe(filter => this.currentFilter = filter);
   }
 }

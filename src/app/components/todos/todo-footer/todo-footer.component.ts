@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/app.reducer';
 import { FilterTypes, setFilter } from '../../filter/filter.actions';
-import { TodoActions } from '../todo.actions';
+import TodoActions from '../todo.actions';
 
 @Component({
   selector: 'app-todo-footer',
@@ -11,14 +11,14 @@ import { TodoActions } from '../todo.actions';
 })
 export class TodoFooterComponent {
 
-  pendingTodos: number = 0;
-  currentFilter: FilterTypes = 'all';
+  pendingTodos: number;
+  currentFilter: FilterTypes;
   filterList: FilterTypes[] = ['all', 'active', 'completed'];
 
   constructor(private store: Store<AppState>) {
     store.select('filter').subscribe(filter => this.currentFilter = filter);
-    store.select('todosList').subscribe(todosList => {
-      this.pendingTodos = todosList.filter(todo => !todo.completed).length;
+    store.select('todos').subscribe(todos => {
+      this.pendingTodos = todos.filter(todo => !todo.completed).length;
     })
   }
 

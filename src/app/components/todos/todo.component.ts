@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/app.reducer';
-import { TodoActions } from '../todo.actions';
+import TodoActions from './todo.actions';
 
 @Component({
-  selector: 'app-todo-page',
-  templateUrl: './todo-page.component.html',
-  styleUrls: ['./todo-page.component.scss']
+  selector: 'app-todo',
+  templateUrl: './todo.component.html',
+  styleUrls: ['./todo.component.scss']
 })
-export class TodoPageComponent {
+export class TodoComponent {
 
   constructor(private store: Store<AppState>) { }
 

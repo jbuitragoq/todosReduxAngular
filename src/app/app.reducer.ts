@@ -5,11 +5,11 @@ import { FilterTypes } from './components/filter/filter.actions';
 import { filterReducer } from './components/filter/filter.reducer';
 
 export interface AppState {
-    todosList: Todo[];
+    todos: Todo[];
     filter: FilterTypes
 }
 
 export const appReducers: ActionReducerMap<AppState> = {
-    todosList: todoReducer,
+    todos: todoReducer,
     filter: filterReducer
 }
